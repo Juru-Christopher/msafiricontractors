@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 
 interface NavLink {
   href: string;
@@ -206,7 +206,8 @@ const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string
   }
 };
 
-export default function Navbar() {
+// Create a separate component that uses useSearchParams
+function NavbarContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -530,5 +531,25 @@ export default function Navbar() {
         )}
       </div>
     </nav>
+  );
+}
+
+// Main export with Suspense boundary
+export default function Navbar() {
+  return (
+    <Suspense fallback={
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full border-b border-black/[.08] bg-white dark:border-white/[.145] dark:bg-black">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <div className="flex flex-col items-start leading-tight">
+              <span className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white tracking-tight">MSAFIRI</span>
+              <span className="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 tracking-[0.2em] uppercase -mt-1">Contractors Ltd</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    }>
+      <NavbarContent />
+    </Suspense>
   );
 }
