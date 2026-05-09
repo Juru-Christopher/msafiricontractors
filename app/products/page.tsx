@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "../../components/ProductCard";
 
@@ -333,8 +333,9 @@ const products: Product[] = [
   },
 ];
 
-export default function ProductsPage() {
-  const searchParams = useSearchParams();
+// Create a separate component that uses useSearchParams
+function ProductsContent() {
+  const searchParams = useSearchParams(); 
   const router = useRouter();
   const categoryParam = searchParams.get("category");
   const [activeCategory, setActiveCategory] = useState(categoryParam || "all");
@@ -437,5 +438,23 @@ export default function ProductsPage() {
         )}
       </div>
     </div>
+  );
+}
+
+// Main export with Suspense boundary
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col bg-white dark:bg-black min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 py-6 pb-16 w-full mt-13">
+          <div className="text-center py-20">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" />
+            <p className="text-zinc-500 dark:text-zinc-400 mt-4">Loading products...</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <ProductsContent />
+    </Suspense>
   );
 }

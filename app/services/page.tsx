@@ -357,7 +357,7 @@ export default function ServicesPage() {
               </Link>
               <Link
                 href="/about"
-                className="rounded-3xl border border-zinc-300 px-6 py-4 text-sm font-semibold text-zinc-950 transition hover:border-emerald-400 hover:text-emerald-500 dark:border-zinc-700 text-center"
+                className="rounded-3xl bg-emerald-500 border border-zinc-300 px-6 py-4 text-sm font-semibold text-zinc-950 transition hover:border-emerald-400 hover:text-black dark:border-zinc-700 text-center"
               >
                 Learn about our team
               </Link>
