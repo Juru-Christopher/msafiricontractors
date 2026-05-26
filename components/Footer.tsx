@@ -71,7 +71,6 @@ export default function Footer() {
             </div>
 
             {/* Social Links */}
-            {/* Social Links */}
             <div className="flex gap-3">
               <a
                 href="https://facebook.com/msafiricontractors"
@@ -90,7 +89,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://tiktok.com/@msafiricontractors"
+                href="https://tiktok.com/@msafiri.contracto3"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-700 hover:text-white transition-colors"
@@ -106,7 +105,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://instagram.com/msafiricontractors"
+                href="https://instagram.com/msafiri_contractors_ltd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-700 hover:text-white transition-colors"
