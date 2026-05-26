@@ -47,6 +47,7 @@ export default function AboutPage() {
                 src="/images/carousel/slide2.jpg"
                 alt="Our Team"
                 fill
+                sizes="100vw"
                 className="object-cover"
               />
             </div>

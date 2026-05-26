@@ -34,6 +34,7 @@ function ProductImageGallery({ images, product }: ProductImageGalleryProps) {
           src={images[selectedImage]}
           alt={product.title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -55,6 +56,7 @@ function ProductImageGallery({ images, product }: ProductImageGalleryProps) {
                 src={img}
                 alt={`${product.title} - Image ${idx + 1}`}
                 fill
+                sizes="80px"
                 className="object-cover"
               />
             </button>

@@ -41,6 +41,7 @@ export default function ContactPage() {
             src="/images/carousel/slide1.jpg"
             alt="Contact MSAFIRI"
             fill
+            sizes="100vw"
             className="object-cover"
           />
         </div>
