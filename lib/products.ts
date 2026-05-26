@@ -26,6 +26,44 @@ function makeProductImages(seed: number): string[] {
   return Array.from({ length: 4 }, (_, offset) => `${folder}/image_${offset + 1}.jpg`);
 }
 
+export function getProductImageFallback(id: number | undefined, currentSrc: string): string {
+  if (!id) {
+    return "/images/products/placeholder.jpg";
+  }
+
+  const productFolder = `/images/products/product_${id}`;
+  const genericProductImage = `${productFolder}.jpg`;
+  const placeholder = "/images/products/placeholder.jpg";
+
+  if (currentSrc === placeholder) {
+    return placeholder;
+  }
+
+  const match = currentSrc.match(/\/product_\d+\/(image|Image)_(\d+)\.jpg$/);
+  if (match) {
+    const prefix = match[1];
+    const index = match[2];
+
+    if (prefix === "image") {
+      return `${productFolder}/Image_${index}.jpg`;
+    }
+
+    if (prefix === "Image") {
+      return genericProductImage;
+    }
+  }
+
+  if (currentSrc === genericProductImage) {
+    return placeholder;
+  }
+
+  if (currentSrc.startsWith(productFolder)) {
+    return genericProductImage;
+  }
+
+  return genericProductImage;
+}
+
 export const products: Product[] = [
   {
     id: 1,

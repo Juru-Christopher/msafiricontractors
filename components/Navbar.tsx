@@ -252,8 +252,7 @@ function NavbarContent() {
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+    const isDark = savedTheme === "light" ? false : true;
     
     setIsDarkMode(isDark);
     if (isDark) {

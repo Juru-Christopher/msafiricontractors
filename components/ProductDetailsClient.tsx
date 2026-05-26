@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { Product, formatPrice } from "@/lib/products";
+import { useState, useEffect } from "react";
+import { Product, formatPrice, getProductImageFallback } from "@/lib/products";
 
 interface ProductDetailsClientProps {
   product: Product;
@@ -12,6 +12,28 @@ interface ProductDetailsClientProps {
 
 export default function ProductDetailsClient({ product, recommended }: ProductDetailsClientProps) {
   const [selectedImage, setSelectedImage] = useState(0);
+  const [thumbnailSrcs, setThumbnailSrcs] = useState(product.images);
+  const [mainImageSrc, setMainImageSrc] = useState(product.images[0]);
+
+  useEffect(() => {
+    setThumbnailSrcs(product.images);
+    setMainImageSrc(product.images[selectedImage] || product.images[0]);
+  }, [product.images, selectedImage]);
+
+  const handleThumbnailError = (index: number) => {
+    setThumbnailSrcs((prev) => {
+      const updated = [...prev];
+      updated[index] = getProductImageFallback(product.id, updated[index]);
+      if (selectedImage === index) {
+        setMainImageSrc(updated[index]);
+      }
+      return updated;
+    });
+  };
+
+  const handleMainImageError = () => {
+    setMainImageSrc((prev) => getProductImageFallback(product.id, prev));
+  };
 
   return (
     <>
@@ -41,11 +63,12 @@ export default function ProductDetailsClient({ product, recommended }: ProductDe
           <div>
             <div className="overflow-hidden rounded-[2rem] border border-zinc-200 bg-zinc-100 shadow-xl shadow-zinc-200/40 dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-black/10">
               <Image
-                src={product.images[selectedImage]}
+                src={mainImageSrc}
                 alt={product.title}
                 width={600}
                 height={600}
                 sizes="(max-width: 1024px) 100vw, 600px"
+                onError={handleMainImageError}
                 className="h-[420px] w-full object-cover"
               />
             </div>
@@ -61,11 +84,12 @@ export default function ProductDetailsClient({ product, recommended }: ProductDe
                   }`}
                 >
                   <Image
-                    src={image}
+                    src={thumbnailSrcs[index]}
                     alt={`${product.title} - Image ${index + 1}`}
                     width={120}
                     height={120}
                     sizes="120px"
+                    onError={() => handleThumbnailError(index)}
                     className="h-20 w-28 object-cover"
                   />
                 </button>

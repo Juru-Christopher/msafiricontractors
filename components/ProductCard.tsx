@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getProductImageFallback } from "@/lib/products";
 
 interface ProductCardProps {
   id?: number;
@@ -38,6 +40,12 @@ export default function ProductCard({
   brand
 }: ProductCardProps) {
   const imageSrc = image || "/images/products/placeholder.jpg";
+  const [imgSrc, setImgSrc] = useState(imageSrc);
+
+  useEffect(() => {
+    setImgSrc(imageSrc);
+  }, [imageSrc]);
+
   const hasDiscount = originalPrice && originalPrice > price;
   const discountPercentage = hasDiscount ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
   
@@ -83,9 +91,10 @@ Please contact me with more information.`);
       {/* Product Image - Fixed height section */}
       <Link href={linkHref} className="relative h-48 sm:h-56 overflow-hidden bg-zinc-100 dark:bg-zinc-800 block flex-shrink-0">
         <Image
-          src={imageSrc}
+          src={imgSrc}
           alt={title}
           fill
+          onError={() => setImgSrc(getProductImageFallback(id, imgSrc))}
           className="object-cover transition-transform duration-500 group-hover:scale-110"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
