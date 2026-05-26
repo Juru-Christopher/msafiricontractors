@@ -2,213 +2,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { notFound, useRouter } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-// Product interface
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  originalPrice?: number;
-  category: string;
-  image: string;
-  inStock: boolean;
-  images?: string[];
-  features?: string[];
-  specifications?: { label: string; value: string }[];
-  warranty?: string;
-  delivery?: string;
-  brand?: string;
-  model?: string;
-}
-
-// PRODUCTS DATA - Same as your products page
-const products: Product[] = [
-  // CCTV SYSTEMS
-  {
-    id: 1,
-    title: "HD CCTV Camera 1080p",
-    description: "High-definition surveillance camera with night vision, motion detection, and weatherproof housing.",
-    price: 380000,
-    originalPrice: 450000,
-    category: "cctv",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Hikvision",
-    model: "DS-2CE16D0T-IR",
-    warranty: "2 years",
-    delivery: "Free delivery within Kampala",
-    images: ["/images/products/product.jpg", "/images/products/product.jpg", "/images/products/product.jpg"],
-    features: [
-      "1080p Full HD resolution",
-      "Night vision up to 30 meters",
-      "IP66 weatherproof rating",
-      "Motion detection alerts",
-      "Remote viewing via mobile app"
-    ],
-    specifications: [
-      { label: "Resolution", value: "1920x1080" },
-      { label: "Lens", value: "3.6mm" },
-      { label: "Night Vision Range", value: "30m" },
-      { label: "Power Supply", value: "12V DC" },
-      { label: "Operating Temperature", value: "-30°C to 60°C" }
-    ]
-  },
-  {
-    id: 2,
-    title: "4-Channel DVR Kit",
-    description: "Complete CCTV kit with 4 cameras, DVR recorder, and remote viewing via mobile app.",
-    price: 850000,
-    originalPrice: 950000,
-    category: "cctv",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Dahua",
-    warranty: "2 years",
-    delivery: "Free delivery within Kampala",
-  },
-  {
-    id: 3,
-    title: "PTZ Dome Camera",
-    description: "Pan-tilt-zoom camera with 360° coverage and auto-tracking features.",
-    price: 1200000,
-    category: "cctv",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Hikvision",
-    warranty: "2 years",
-  },
-  {
-    id: 4,
-    title: "Biometric Fingerprint Reader",
-    description: "Advanced fingerprint access control with 3000 user capacity.",
-    price: 750000,
-    originalPrice: 850000,
-    category: "access-control",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "ZKTeco",
-    warranty: "1 year",
-  },
-  {
-    id: 5,
-    title: "RFID Card Reader Pro",
-    description: "Proximity card reader with weatherproof design for indoor/outdoor use.",
-    price: 250000,
-    category: "access-control",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "HID",
-    warranty: "1 year",
-  },
-  {
-    id: 6,
-    title: "Electric Gate Motor 800kg",
-    description: "Heavy-duty sliding gate motor with remote controls and battery backup.",
-    price: 2100000,
-    originalPrice: 2500000,
-    category: "automatic-gates",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Nice",
-    warranty: "3 years",
-  },
-  {
-    id: 7,
-    title: "Swing Gate Opener Kit",
-    description: "Dual swing gate motor kit with obstacle detection and soft start/stop.",
-    price: 1800000,
-    category: "automatic-gates",
-    image: "/images/products/product.jpg",
-    inStock: false,
-    brand: "FAAC",
-    warranty: "2 years",
-  },
-  {
-    id: 8,
-    title: "Electric Fence Energizer 5J",
-    description: "High-power energizer for perimeter fencing with LCD display.",
-    price: 550000,
-    originalPrice: 650000,
-    category: "electric-fence",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Nemtek",
-    warranty: "2 years",
-  },
-  {
-    id: 9,
-    title: "Razor Wire Roll 50m",
-    description: "Galvanized razor wire for high-security perimeter protection.",
-    price: 180000,
-    category: "electric-fence",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Security Plus",
-    warranty: "N/A",
-  },
-  {
-    id: 10,
-    title: "Wireless Alarm Kit",
-    description: "Smart alarm system with door sensors, motion detectors, and mobile app.",
-    price: 450000,
-    originalPrice: 550000,
-    category: "alarms",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Paradox",
-    warranty: "2 years",
-  },
-  {
-    id: 11,
-    title: "Smoke Detector Wireless",
-    description: "Wireless smoke sensor with 85dB siren and low battery indicator.",
-    price: 95000,
-    category: "alarms",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Honeywell",
-    warranty: "1 year",
-  },
-  {
-    id: 12,
-    title: "Video Intercom 7\"",
-    description: "Indoor monitor with touchscreen, WiFi, and remote unlock feature.",
-    price: 650000,
-    originalPrice: 750000,
-    category: "intercom",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "Bticino",
-    warranty: "2 years",
-  },
-  {
-    id: 13,
-    title: "Outdoor Intercom Station",
-    description: "Weatherproof door station with camera, keypad, and card reader.",
-    price: 450000,
-    category: "intercom",
-    image: "/images/products/product.jpg",
-    inStock: true,
-    brand: "2N",
-    warranty: "2 years",
-  },
-];
-
-// Get product by ID
-function getProductById(id: number): Product | undefined {
-  return products.find(p => p.id === id);
-}
-
-// Get recommended products (same category, exclude current product)
-function getRecommendedProducts(currentProduct: Product, limit: number = 8): Product[] {
-  return products
-    .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
-    .slice(0, limit);
-}
+import type { Product } from "../../../lib/products";
+import { getProductById, getRecommendedProducts } from "../../../lib/products";
 
 // Format price in UGX (Ugandan Shillings)
 function formatPrice(price: number): string {
@@ -220,51 +19,70 @@ function formatPrice(price: number): string {
   }).format(price);
 }
 
-interface ProductDetailsPageProps {
-  params: Promise<{ id: string }>;
+type ProductImageGalleryProps = {
+  images: string[];
+  product: Product;
+};
+
+function ProductImageGallery({ images, product }: ProductImageGalleryProps) {
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  return (
+    <div>
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-800">
+        <Image
+          src={images[selectedImage]}
+          alt={product.title}
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {images.length > 1 && (
+        <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
+          {images.map((img, idx) => (
+            <button
+              key={idx}
+              onClick={() => setSelectedImage(idx)}
+              className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                selectedImage === idx
+                  ? "border-emerald-500 shadow-md"
+                  : "border-transparent hover:border-zinc-300 dark:hover:border-zinc-700"
+              }`}
+            >
+              <Image
+                src={img}
+                alt={`${product.title} - Image ${idx + 1}`}
+                fill
+                className="object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default function ProductDetailsPage({ params }: ProductDetailsPageProps) {
+export default function ProductDetailsPage() {
+  const params = useParams();
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(0);
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+
+  const productId = params?.id
+    ? Array.isArray(params.id)
+      ? Number(params.id[0])
+      : Number(params.id)
+    : NaN;
+
+  const product = !Number.isNaN(productId) ? getProductById(productId) : null;
+  const recommendedProducts = product ? getRecommendedProducts(product, 8) : [];
 
   useEffect(() => {
-    async function loadProduct() {
-      try {
-        setLoading(true);
-        const resolvedParams = await params;
-        const productId = parseInt(resolvedParams.id);
-        const foundProduct = getProductById(productId);
-        setProduct(foundProduct || null);
-        
-        if (foundProduct) {
-          const recProducts = getRecommendedProducts(foundProduct, 8);
-          setRecommendedProducts(recProducts);
-        }
-      } catch (error) {
-        console.error("Error loading product:", error);
-        setProduct(null);
-      } finally {
-        setLoading(false);
-      }
-    }
-    
-    loadProduct();
-  }, [params]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent"></div>
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400">Loading product details...</p>
-        </div>
-      </div>
-    );
-  }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSelectedImage(0);
+  }, [productId]);
 
   if (!product) {
     notFound();
@@ -291,7 +109,6 @@ Thank you.`);
 
   // Handle product click from recommended section
   const handleProductClick = (productId: number) => {
-    setLoading(true);
     router.push(`/products/${productId}`);
   };
 

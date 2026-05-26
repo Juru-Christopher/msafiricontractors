@@ -78,7 +78,7 @@ export default function Testimonials() {
     if (!scrollContainer) return;
 
     let animationId: number;
-    const scrollSpeed = 1;
+    const scrollSpeed = 0.5;
 
     const scroll = () => {
       if (scrollContainer) {

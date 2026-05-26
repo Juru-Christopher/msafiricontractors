@@ -15,7 +15,7 @@ const services = [
       "Complete CCTV systems with HD cameras, remote monitoring, and intelligent recording for round-the-clock security.",
     details:
       "Our CCTV solutions include 4K cameras, night vision, motion detection, and cloud storage. Monitor your property from anywhere 24/7.",
-    image: "/images/services/placeholder.jpg",
+    image: "/images/carousel/slide1.jpg",
   },
   {
     id: "access-control",
@@ -25,7 +25,7 @@ const services = [
       "Biometric readers, card access, and smart locks to keep your people in and unauthorized visitors out.",
     details:
       "Choose from fingerprint scanners, RFID cards, mobile credentials, or facial recognition. Full audit trails and remote management included.",
-    image: "/images/services/placeholder.jpg",
+    image: "/images/carousel/slide2.jpg",
   },
   {
     id: "video-intercom",
@@ -35,7 +35,7 @@ const services = [
       "Modern door entry systems with HD video, mobile alerts, and safe visitor screening at every entrance.",
     details:
       "See and speak with visitors before granting access. Mobile app integration allows you to manage entries from anywhere.",
-    image: "/images/services/placeholder.jpg",
+    image: "/images/services/intercom.jpg",
   },
   {
     id: "electric-fencing",

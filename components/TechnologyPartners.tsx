@@ -40,6 +40,7 @@ const partners: Partner[] = [
     description: "Market leader in network video, delivering intelligent security solutions for a smarter world.",
     website: "https://www.axis.com",
   },
+  /*
   {
     id: 5,
     name: "Hanwha Vision",
@@ -67,7 +68,7 @@ const partners: Partner[] = [
     logo: "/images/partners/placeholder.jpg",
     description: "Professional IP video surveillance products with advanced features for enterprise-level security.",
     website: "https://www.uniview.com",
-  },
+  },*/
 ];
 
 export default function TechnologyPartners() {

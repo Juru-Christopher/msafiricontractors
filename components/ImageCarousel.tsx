@@ -1,8 +1,7 @@
- "use client";
+"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 interface CarouselImage {
   src: string;
@@ -43,8 +42,8 @@ export default function ImageCarousel() {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Contact information
-  const salesEmail = "sales@msafiricontractors.co.ke";
-  const whatsappNumber = "256700000000"; // Replace with your actual WhatsApp number
+  const salesEmail = "info@msafiricontractors.com"; // Sales email address
+  const whatsappNumber = "+256 742415717"; // WhatsApp number in international format
 
   const goToNext = useCallback(() => {
     setIsTransitioning(true);
@@ -150,38 +149,52 @@ Thank you.`);
                   <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                     {/* Contact Sales Button - Email */}
                     <button
+                      type="button"
                       onClick={handleContactSales}
-                      className="group flex items-center gap-2 px-6 py-2.5 bg-emerald-600 text-white border-2 border-emerald-600 rounded-full font-medium text-sm transition-all duration-300 hover:bg-emerald-700 hover:border-emerald-700"
+                      className="group relative isolate flex min-w-44 items-center justify-center gap-2 overflow-hidden rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-2xl shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-amber-300/70 hover:bg-amber-400 hover:text-zinc-950 hover:shadow-amber-400/35 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-black active:translate-y-0"
                     >
-                      <svg
-                        className="w-4 h-4 transition-transform duration-300 group-hover:scale-110"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                      Contact Sales
+                      <span className="absolute inset-0 -z-10 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-[120%]" />
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-amber-200 transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-zinc-950 group-hover:text-amber-300">
+                        <svg
+                          className="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </span>
+                      <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                        Contact Sales
+                      </span>
                     </button>
 
                     {/* WhatsApp Us Button */}
                     <button
+                      type="button"
                       onClick={handleWhatsAppChat}
-                      className="group flex items-center gap-2 px-6 py-2.5 bg-[#25D366] text-white border-2 border-[#25D366] rounded-full font-medium text-sm transition-all duration-300 hover:bg-[#20BA5C] hover:border-[#20BA5C]"
+                      className="group relative isolate flex min-w-44 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#25D366]/70 bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-2xl shadow-[#25D366]/25 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-white/70 hover:bg-white hover:text-[#128C7E] hover:shadow-[#25D366]/45 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-black active:translate-y-0"
                     >
-                      <svg
-                        className="w-4 h-4 transition-transform duration-300 group-hover:scale-110"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.588 2.014.896 3.13.897h.002c3.18 0 5.767-2.586 5.768-5.766.001-3.18-2.585-5.767-5.765-5.767zm-.27 1.5c2.295 0 4.157 1.863 4.157 4.149 0 2.286-1.862 4.149-4.157 4.149-.873 0-1.678-.263-2.319-.748l-.325-.218-1.176.309.315-1.149-.237-.337c-.505-.737-.771-1.577-.77-2.456.001-2.285 1.863-4.148 4.148-4.148zm-2.324 1.593c-.167.319-.298.862-.41 1.115-.084.19-.153.403-.168.437s.066.263.268.485c.202.222.913.964 1.283 1.298.354.319.613.409.867.409.221 0 .391-.108.586-.274.195-.166.277-.332.429-.55.152-.218.259-.372.411-.375.152-.003.255.013.389.082.128.064.788.373.84.401.052.028.069.054.109.125.04.071.04.334-.019.521-.06.187-.249.442-.368.542-.118.1-.343.205-.493.222-.15.017-.277.032-.492-.02-.216-.052-.719-.264-1.25-.686-.51-.404-1.017-1.086-1.185-1.333-.168-.247-.168-.433-.084-.599.084-.166.109-.249.166-.36.058-.111.087-.166.131-.25.044-.084.022-.166-.011-.249-.033-.083-.152-.399-.249-.611-.092-.203-.186-.519-.266-.713-.07-.165-.152-.151-.203-.149-.051.002-.109.008-.166.016zm-4.937 2.736c-1.079 0-2.102.44-2.822 1.158-.72.718-1.157 1.742-1.157 2.821 0 .894.27 1.639.711 2.226l.234.301-.471 1.723 1.768-.464.293.178c.615.378 1.286.577 1.985.579.001 0 .002 0 .003 0 1.079 0 2.103-.44 2.823-1.159.72-.718 1.158-1.742 1.158-2.821 0-1.079-.44-2.103-1.158-2.823-.72-.72-1.743-1.158-2.823-1.158zm0 1.5c.743 0 1.423.286 1.915.778.492.492.778 1.172.778 1.915 0 .743-.286 1.423-.778 1.915-.493.492-1.172.778-1.915.778-.744 0-1.424-.286-1.916-.778-.492-.492-.778-1.172-.778-1.915 0-.743.286-1.424.778-1.916.492-.492 1.172-.778 1.916-.778zm-1.632 1.53c-.076.145-.169.397-.169.582 0 .185.093.44.169.582.076.142.199.338.338.477.14.14.335.263.477.339.142.076.397.169.582.169.185 0 .44-.093.582-.169.142-.076.338-.199.477-.339.14-.139.263-.335.339-.477.076-.142.169-.397.169-.582 0-.185-.093-.44-.169-.582-.076-.142-.199-.338-.339-.477-.139-.14-.335-.263-.477-.339-.142-.076-.397-.169-.582-.169-.185 0-.44.093-.582.169-.142.076-.338.199-.477.339-.14.139-.263.335-.339.477z"/>
-                      </svg>
-                      WhatsApp Us
+                      <span className="absolute inset-0 -z-10 origin-left scale-x-0 bg-gradient-to-r from-[#128C7E] via-[#25D366] to-[#DCF8C6] transition-transform duration-500 group-hover:scale-x-100" />
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#25D366] shadow-lg shadow-black/10 transition-all duration-300 group-hover:-rotate-12 group-hover:scale-110 group-hover:bg-[#128C7E] group-hover:text-white">
+                        <svg
+                          className="h-4 w-4"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 5.023h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.002-5.45 4.436-9.884 9.889-9.884 2.64.001 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892a11.82 11.82 0 001.588 5.927L.057 24l6.305-1.654a11.88 11.88 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                      </span>
+                      <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                        WhatsApp Us
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -191,10 +204,10 @@ Thank you.`);
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on Mobile, Visible on Tablet and Desktop */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur-sm transition-all hover:bg-white/40 dark:bg-black/20 dark:hover:bg-black/40 z-10"
+        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur-sm transition-all hover:bg-white/40 dark:bg-black/20 dark:hover:bg-black/40 z-10 hidden sm:flex"
         aria-label="Previous slide"
       >
         <svg
@@ -214,7 +227,7 @@ Thank you.`);
 
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur-sm transition-all hover:bg-white/40 dark:bg-black/20 dark:hover:bg-black/40 z-10"
+        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur-sm transition-all hover:bg-white/40 dark:bg-black/20 dark:hover:bg-black/40 z-10 hidden sm:flex"
         aria-label="Next slide"
       >
         <svg

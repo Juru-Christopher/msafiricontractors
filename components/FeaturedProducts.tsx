@@ -1,108 +1,8 @@
 import Link from "next/link";
 import ProductCard from "./ProductCard";
+import { products } from "@/lib/products";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  originalPrice?: number;
-  image: string;
-  category?: string;
-  brand?: string;
-  inStock?: boolean;
-}
-
-const products: Product[] = [
-  {
-    id: 1,
-    title: "HD CCTV Camera",
-    description: "1080p resolution with night vision and motion detection",
-    price: 380000,
-    originalPrice: 450000,
-    image: "/images/products/product.jpg",
-    category: "cctv",
-    brand: "Hikvision",
-    inStock: true,
-  },
-  {
-    id: 2,
-    title: "Biometric Access Control",
-    description: "Fingerprint and card-based entry system for secure access",
-    price: 999000,
-    originalPrice: 1200000,
-    image: "/images/products/product.jpg",
-    category: "access-control",
-    brand: "ZKTeco",
-    inStock: true,
-  },
-  {
-    id: 3,
-    title: "Electric Fence Energizer",
-    description: "High-voltage pulse system for perimeter protection",
-    price: 750000,
-    originalPrice: 850000,
-    image: "/images/products/product.jpg",
-    category: "electric-fence",
-    brand: "Nemtek",
-    inStock: true,
-  },
-  {
-    id: 4,
-    title: "Automatic Gate Motor",
-    description: "Heavy-duty sliding gate motor with remote control",
-    price: 2100000,
-    originalPrice: 2500000,
-    image: "/images/products/product.jpg",
-    category: "automatic-gates",
-    brand: "Nice",
-    inStock: true,
-  },
-  {
-    id: 5,
-    title: "Wireless Alarm System",
-    description: "Smart alarm with mobile alerts and zone control",
-    price: 550000,
-    originalPrice: 650000,
-    image: "/images/products/product.jpg",
-    category: "alarms",
-    brand: "Paradox",
-    inStock: true,
-  },
-  {
-    id: 6,
-    title: "Razor Wire Coil",
-    description: "Galvanized razor wire for high-security fencing",
-    price: 150000,
-    originalPrice: 180000,
-    image: "/images/products/product.jpg",
-    category: "electric-fence",
-    brand: "Security Plus",
-    inStock: true,
-  },
-  {
-    id: 7,
-    title: "IP Intercom System",
-    description: "Video intercom with remote unlocking capability",
-    price: 850000,
-    originalPrice: 950000,
-    image: "/images/products/product.jpg",
-    category: "intercom",
-    brand: "2N",
-    inStock: true,
-  },
-  {
-    id: 8,
-    title: "Solar Security Light",
-    description: "Motion-activated solar light with wide coverage",
-    price: 95000,
-    originalPrice: 120000,
-    image: "/images/products/product.jpg",
-    category: "alarms",
-    brand: "Generic",
-    inStock: true,
-  },
-];
+const featuredProducts = products.slice(0, 8);
 
 export default function FeaturedProducts() {
   return (
@@ -120,7 +20,7 @@ export default function FeaturedProducts() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          {products.map((product) => (
+          {featuredProducts.map((product) => (
             <ProductCard
               key={product.id}
               id={product.id}
@@ -129,7 +29,7 @@ export default function FeaturedProducts() {
               description={product.description}
               price={product.price}
               originalPrice={product.originalPrice}
-              image={product.image}
+              image={product.images?.[0] || product.image}
               category={product.category}
               brand={product.brand}
               inStock={product.inStock}

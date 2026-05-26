@@ -44,9 +44,6 @@ export default function ProductCard({
   // Use the provided href, or fallback to id-based URL
   const linkHref = href || (id ? `/products/${id}` : "#");
 
-  // Debug log to see what's happening
-  console.log(`ProductCard: ${title} -> ${linkHref}`);
-
   // Get category color
   const getCategoryColor = (cat?: string) => {
     switch(cat) {
