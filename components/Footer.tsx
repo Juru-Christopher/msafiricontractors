@@ -32,9 +32,9 @@ export default function Footer() {
 
             {/* Badges - Licensed & Certified */}
             <div className="flex gap-3 mb-4">
-              <div className="flex items-center gap-2 px-3 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
+              <div className="flex items-center gap-2 px-3 py-2 bg-zinc-50 border border-zinc-200 rounded-lg">
                 <svg
-                  className="w-4 h-4 text-emerald-400 flex-shrink-0"
+                  className="w-4 h-4 text-zinc-500 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -46,13 +46,13 @@ export default function Footer() {
                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                   />
                 </svg>
-                <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">
                   Licensed
                 </span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+              <div className="flex items-center gap-2 px-3 py-2 bg-zinc-50 border border-zinc-200 rounded-lg">
                 <svg
-                  className="w-4 h-4 text-amber-400 flex-shrink-0"
+                  className="w-4 h-4 text-zinc-500 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -64,7 +64,7 @@ export default function Footer() {
                     d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                   />
                 </svg>
-                <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">
                   Certified
                 </span>
               </div>
@@ -116,7 +116,7 @@ export default function Footer() {
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03z" />
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
               </a>
 
@@ -260,7 +260,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href="/services/surveillance"
+                  href="/services#cctv"
                   className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group"
                 >
                   <svg
@@ -287,7 +287,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/access-control"
+                  href="/services#access-control"
                   className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group"
                 >
                   <svg
@@ -308,7 +308,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/electric-fence"
+                  href="/services#razor-wires"
                   className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group"
                 >
                   <svg
@@ -329,7 +329,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/automatic-gates"
+                  href="/services#automatic-gates"
                   className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group"
                 >
                   <svg
@@ -350,7 +350,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/maintenance"
+                  href="/services#installation-maintenance"
                   className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group"
                 >
                   <svg
@@ -446,7 +446,7 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="mailto:info@premiumsecurity.com"
+                  href="mailto:info@msafiricontractors.com"
                   className="text-sm text-zinc-400 hover:text-white transition-colors"
                 >
                   info@msafiricontractors.com

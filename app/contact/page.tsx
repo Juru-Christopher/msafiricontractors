@@ -85,7 +85,7 @@ export default function ContactPage() {
                 Our Location
               </h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                Bukoto-Kisaasi Road
+                7 Bukoto-Kisaasi Road
                 <br />
                 Kampala, Uganda
               </p>
@@ -335,7 +335,6 @@ export default function ContactPage() {
                   </ul>
                 </div>
 
-                {/* Follow Us - Narrow width, vertical icons */}
                 {/* Follow Us - Narrow width, vertical icons */}
                 <div className="w-auto bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 border border-zinc-200 dark:border-zinc-800 flex-shrink-0">
                   <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-3 text-center">

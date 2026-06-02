@@ -3,12 +3,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #b91c1c; /* red (used sparingly) */
   color-scheme: light;
 }
 
 html.dark {
   --background: #000000;
   --foreground: #f8fafc;
+  --accent: #ef4444; /* slightly lighter red for dark */
   color-scheme: dark;
 }
 
@@ -38,6 +40,47 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Theme overrides: map other color utilities to the black/white/red palette.
+   Keeps the site limited to white, black and a single red accent. */
+:root {
+  --accent-rgb: 185,28,28; /* for rgba usage */
+}
+
+/* Text color overrides -> use red accent where previously green/emerald was used */
+.text-emerald-600, .text-emerald-700, .text-emerald-500, .text-green-600, .text-emerald-300, .text-green-500 {
+  color: var(--accent) !important;
+}
+.dark .text-emerald-400, .dark .text-green-400, .text-emerald-400 {
+  color: color-mix(in srgb, var(--accent) 70%, white 30%) !important;
+}
+
+/* Background overrides: subtle red tints for previous colored backgrounds */
+.bg-emerald-50, .bg-emerald-100, .bg-green-50 {
+  background-color: rgba(var(--accent-rgb), 0.06) !important;
+}
+.dark .bg-emerald-950\/30, .dark .bg-green-900\/30 {
+  background-color: rgba(var(--accent-rgb), 0.12) !important;
+}
+
+/* Accent buttons or borders that used emerald -> use red */
+.bg-emerald-500, .bg-green-500, .border-emerald-500, .border-green-500, .ring-emerald-400 {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.hover\:bg-emerald-600:hover, .hover\:bg-green-600:hover {
+  background-color: color-mix(in srgb, var(--accent) 80%, black 20%) !important;
+}
+
+/* Amber/yellow/orange/blue/purple map to neutral to avoid adding new colors */
+.text-amber-400, .bg-amber-100, .bg-amber-500, .text-amber-600, .hover\:bg-amber-400:hover {
+  color: var(--foreground) !important;
+  background-color: transparent !important;
+}
+.text-blue-600, .bg-blue-500, .text-orange-600, .bg-orange-500, .text-yellow-600, .bg-yellow-500, .text-purple-600, .bg-purple-500 {
+  color: var(--foreground) !important;
+  background-color: transparent !important;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

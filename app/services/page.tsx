@@ -65,7 +65,7 @@ const services = [
       "Automated gate systems for residential, commercial and industrial properties with remote control and safety sensors.",
     details:
       "Swing, slide, or barrier gates with solar or AC power options. Includes remote controls, loop detectors, and safety photocells.",
-    image: "/images/services/placeholder.jpg",
+    image: "/images/services/autogates1.jpg",
   },
   {
     id: "security-consultancy",
@@ -75,7 +75,7 @@ const services = [
       "Site surveys, audit reports and resilience planning to strengthen your security strategy from the ground up.",
     details:
       "Our certified experts assess vulnerabilities, design layered protection strategies, and help you achieve compliance with industry regulations.",
-    image: "/images/services/placeholder.jpg",
+    image: "/images/services/consultancy.jpg",
   },
   {
     id: "installation-maintenance",
@@ -85,7 +85,7 @@ const services = [
       "Professional installation, ongoing maintenance and rapid response to ensure your security never sleeps.",
     details:
       "Scheduled preventive maintenance, emergency repairs, firmware updates, and 24/7 technical support to keep your systems operational.",
-    image: "/images/services/placeholder.jpg",
+    image: "/images/services/maintenance.jpg",
   },
 ];
 

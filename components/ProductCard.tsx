@@ -54,22 +54,11 @@ export default function ProductCard({
 
   // Get category color
   const getCategoryColor = (cat?: string) => {
-    switch(cat) {
-      case "cctv":
-        return "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20";
-      case "access-control":
-        return "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20";
-      case "automatic-gates":
-        return "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20";
-      case "electric-fence":
-        return "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20";
-      case "alarms":
-        return "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20";
-      case "intercom":
-        return "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20";
-      default:
-        return "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20";
+    // Keep category badges neutral; only highlight 'alarms' with a subtle red tint
+    if (cat === "alarms") {
+      return "bg-red-50 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800";
     }
+    return "bg-zinc-50 text-zinc-900 dark:bg-zinc-800 dark:text-white border-zinc-200 dark:border-zinc-800";
   };
 
   // Handle quick inquiry
@@ -131,7 +120,7 @@ Please contact me with more information.`);
       <div className="p-4 sm:p-5 flex flex-col flex-grow">
         {/* Title - Fixed height with line clamp */}
         <Link href={linkHref}>
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2 line-clamp-2 min-h-[3.5rem] group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2 line-clamp-2 min-h-[3.5rem] transition-colors">
             {title}
           </h3>
         </Link>
@@ -159,7 +148,7 @@ Please contact me with more information.`);
                 {formatPrice(originalPrice)}
               </div>
               <div className="flex items-baseline gap-2 flex-wrap">
-                <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
+                <span className="text-xl font-bold text-zinc-900 dark:text-white">
                   {formatPrice(price)}
                 </span>
                 <span className="text-xs text-zinc-500 dark:text-zinc-400">
@@ -168,7 +157,7 @@ Please contact me with more information.`);
               </div>
             </div>
           ) : (
-            <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
+            <div className="text-xl font-bold text-zinc-900 dark:text-white">
               {formatPrice(price)}
             </div>
           )}
@@ -177,10 +166,10 @@ Please contact me with more information.`);
         {/* Stock Status - Optional */}
         {inStock && price < 100000 && (
           <div className="mb-3">
-            <span className="inline-flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
+            <span className="inline-flex items-center gap-1 text-xs text-red-600 dark:text-red-400">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
               </span>
               In Stock
             </span>
@@ -199,7 +188,7 @@ Please contact me with more information.`);
           {/* Quick Inquiry Button */}
           <button
             onClick={handleQuickInquiry}
-            className="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full text-sm font-medium transition-all duration-300 active:scale-95 flex-shrink-0"
+            className="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full text-sm font-medium transition-all duration-300 active:scale-95 flex-shrink-0"
             aria-label="Quick inquiry"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

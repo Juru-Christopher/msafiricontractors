@@ -40,17 +40,17 @@ export default function ProductDetailsClient({ product, recommended }: ProductDe
       <section className="bg-white dark:bg-black">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex self-start rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-3 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-4">
+            <div className="inline-flex self-start rounded-full bg-zinc-50 dark:bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-900 dark:text-white mb-4">
               {product.category.replace("-", " ").toUpperCase()}
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">{product.title}</h1>
-            <p className="mt-4 text-xl font-semibold text-emerald-600 dark:text-emerald-400">{formatPrice(Number(product.price))}</p>
+            <p className="mt-4 text-xl font-semibold text-zinc-900 dark:text-white">{formatPrice(Number(product.price))}</p>
             <p className="mt-6 text-base leading-8 text-zinc-600 dark:text-zinc-400">{product.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/products" className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 py-3 text-sm text-zinc-900 dark:text-white transition hover:bg-zinc-50 dark:hover:bg-zinc-800">
                 Back to products
               </Link>
-              <Link href="/contact" className="rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600">
+              <Link href="/contact" className="rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700">
                 Enquire now
               </Link>
             </div>
@@ -79,7 +79,7 @@ export default function ProductDetailsClient({ product, recommended }: ProductDe
                   onClick={() => setSelectedImage(index)}
                   className={`shrink-0 overflow-hidden rounded-3xl border transition ${
                     selectedImage === index
-                      ? "border-emerald-500 bg-emerald-500/10 ring-2 ring-emerald-400"
+                      ? "border-red-500 bg-red-50 ring-2 ring-red-400"
                       : "border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700"
                   }`}
                 >
@@ -122,10 +122,10 @@ export default function ProductDetailsClient({ product, recommended }: ProductDe
                     </div>
                   )}
                   {product.inStock ? (
-                    <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-medium">
+                    <div className="flex items-center gap-2 text-red-600 dark:text-red-400 font-medium">
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                       </span>
                       In Stock
                     </div>
@@ -138,16 +138,16 @@ export default function ProductDetailsClient({ product, recommended }: ProductDe
 
             {recommended.length > 0 && (
               <div className="rounded-[2rem] border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 p-8 shadow-xl shadow-zinc-200/30 dark:shadow-black/10">
-                <p className="uppercase tracking-[0.3em] text-emerald-500 text-xs font-semibold">Recommended products</p>
+                <p className="uppercase tracking-[0.3em] text-zinc-900 dark:text-white text-xs font-semibold">Recommended products</p>
                 <div className="mt-6 space-y-3">
                   {recommended.slice(0, 4).map((item) => (
                     <Link
                       key={item.id}
                       href={`/products/${item.id}`}
-                      className="block rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 p-4 text-sm text-zinc-900 dark:text-white transition hover:border-emerald-400 hover:bg-emerald-50 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/30"
+                      className="block rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 p-4 text-sm text-zinc-900 dark:text-white transition hover:border-red-300 hover:bg-red-50 dark:hover:border-red-500 dark:hover:bg-red-950/10"
                     >
                       <p className="font-semibold line-clamp-2">{item.title}</p>
-                      <p className="mt-1 text-xs text-emerald-600 dark:text-emerald-400 font-medium">{formatPrice(item.price)}</p>
+                      <p className="mt-1 text-xs text-zinc-900 dark:text-white font-medium">{formatPrice(item.price)}</p>
                     </Link>
                   ))}
                 </div>

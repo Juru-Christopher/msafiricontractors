@@ -95,7 +95,7 @@ Thank you.`);
 
   // Handle WhatsApp Chat
   const handleWhatsAppChat = () => {
-    const message = encodeURIComponent(`Hello MSAFIRI Contractors!
+    const message = encodeURIComponent(`Hello!
 
 I'm interested in your security solutions. Could you please provide me with more information about your products and services?
 

@@ -350,15 +350,15 @@ function NavbarContent() {
                                 }}
                                 className={`group flex items-start gap-3 rounded-xl px-3 py-2.5 transition-all cursor-pointer ${
                                   isActive
-                                    ? "bg-emerald-50 dark:bg-emerald-950/30 border-l-2 border-emerald-500"
+                                    ? "bg-red-50 dark:bg-red-950/30 border-l-2 border-red-500"
                                     : item.label === "All Products" || item.label === "All Services"
-                                    ? "border-l-2 border-transparent hover:border-emerald-200 dark:hover:border-emerald-800"
+                                    ? "border-l-2 border-transparent hover:border-red-200 dark:hover:border-red-800"
                                     : "hover:bg-zinc-50 dark:hover:bg-zinc-800"
                                 }`}
                               >
                                 <span className={`flex-shrink-0 mt-0.5 transition-colors ${
                                   isActive
-                                    ? "text-emerald-600 dark:text-emerald-400"
+                                    ? "text-red-600 dark:text-red-400"
                                     : "text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white"
                                 }`}>
                                   {item.icon}
@@ -367,7 +367,7 @@ function NavbarContent() {
                                   <div className="flex items-center gap-1.5">
                                     <span className={`text-sm font-medium transition-colors ${
                                       isActive
-                                        ? "text-emerald-700 dark:text-emerald-300"
+                                        ? "text-red-700 dark:text-red-300"
                                         : "text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-zinc-300"
                                     }`}>
                                       {item.label}
@@ -384,7 +384,7 @@ function NavbarContent() {
                                   {item.description && (
                                     <p className={`text-xs mt-0.5 ${
                                       isActive
-                                        ? "text-emerald-600 dark:text-emerald-400"
+                                        ? "text-red-600 dark:text-red-400"
                                         : "text-zinc-500 dark:text-zinc-400"
                                     }`}>
                                       {item.description}
@@ -492,13 +492,13 @@ function NavbarContent() {
                                 }}
                                 className={`flex items-center gap-3 rounded-full px-4 py-2 text-sm transition-colors cursor-pointer ${
                                   isActive
-                                    ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300"
+                                    ? "bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-300"
                                     : "text-zinc-600 hover:bg-black/[.04] hover:text-black dark:text-zinc-400 dark:hover:bg-white/[.145] dark:hover:text-zinc-50"
                                 }`}
                               >
                                 <span className={`flex-shrink-0 ${
                                   isActive
-                                    ? "text-emerald-600 dark:text-emerald-400"
+                                    ? "text-red-600 dark:text-red-400"
                                     : ""
                                 }`}>
                                   {item.icon}

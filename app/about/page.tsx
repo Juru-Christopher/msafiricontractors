@@ -44,7 +44,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden bg-zinc-200 dark:bg-zinc-800">
               <Image
-                src="/images/carousel/slide2.jpg"
+                src="/images/services/survillence1.jpg"
                 alt="Our Team"
                 fill
                 sizes="100vw"
